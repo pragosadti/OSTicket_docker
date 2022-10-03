@@ -1,5 +1,5 @@
 # Introduction
-Docker image for running version 1.15.1 of [OSTicket](http://osticket.com/).
+Docker image for running version 1.17 of [OSTicket](http://osticket.com/).
 
 This image has been inspired from CampbellSoftware image [CampbellSoftwareSolutions](https://github.com/CampbellSoftwareSolutions/docker-osticket).
 
@@ -14,8 +14,8 @@ What is this All About?
   * Email support
   * Easy to work with nginx Proxy [JWilder](https://hub.docker.com/r/jwilder/nginx-proxy/dockerfile) (Opticional)
 
-OSTicket is being served by [Apache2](https://httpd.apache.org/) using [PHP-FPM](http://php-fpm.org/) with PHP 7.2.
-PHP7's [mail](http://php.net/manual/en/function.mail.php) function is configured to use [msmtp](http://msmtp.sourceforge.net/) to send out-going messages.
+OSTicket is being served by [Apache2](https://httpd.apache.org/) using [PHP-FPM](http://php-fpm.org/) with PHP 8.
+PHP8's [mail](http://php.net/manual/en/function.mail.php) function is configured to use [msmtp](http://msmtp.sourceforge.net/) to send out-going messages.
 
 The `setup/` directory has been renamed as `setup_hidden/` and the file system permissions deny nginx access to this
 location. It was not removed as the setup files are required as part of the automatic configuration during container
@@ -38,7 +38,7 @@ cd docker-osticket-apache2
 ```
 
 ```bash
-sudo docker build -t pragosa/osticket:1.15.1 .
+sudo docker build -t pragosa/osticket:1.17 .
 ```
 
 ```bash
@@ -56,7 +56,7 @@ passwords above and read the rest of this documentation!
 Note (1): If you want to change the environmental database variables on the OSTicket image to run, you can do it as follows.
 
 ```bash
-docker run --name pragosa_osticket -d -e MYSQL_ROOT_PASSWORD=new_root_password -e MYSQL_USER=new_root_user -e MYSQL_PASSWORD=new_secret -e MYSQL_DATABASE=osticket --link osticket_mysql:mysql -p 8080:80 pragosa/osticket:1.15.1
+docker run --name pragosa_osticket -d -e MYSQL_ROOT_PASSWORD=new_root_password -e MYSQL_USER=new_root_user -e MYSQL_PASSWORD=new_secret -e MYSQL_DATABASE=osticket --link osticket_mysql:mysql -p 8080:80 pragosa/osticket:1.17
 ```
 
 Note (2): OSTicket automatically redirects `http://localhost:8080/scp` to `http://localhost/scp/`. Either serve this on port 80 or don't omit the
