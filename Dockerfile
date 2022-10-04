@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 # ENVIROMENT FOR OSTICKET (CHANGE VERSION CHECK https://github.com/osTicket/osTicket.git TO SEE AVAIABLE VERSIONS )
-ENV OSTICKET_VERSION=1.15.8
+ENV OSTICKET_VERSION=1.17
 
 # ENVIROMENT TO INSTALL PHP (WITHOUT ANY INPUT FROM THE KEYBOARD)
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,7 +19,7 @@ debconf-set-selections /tmp/preseed.txt \
 
 # APACHE2 + PHP AND ALL PACKAGES NEEDED
 RUN apt-get install -y apache2 \
-&& apt-get install -y php php-fpm php-pear php-imap php-apcu php-intl php-cgi php-common php-zip php-mbstring php-net-socket php-gd php-xml-util php-mysql php-bcmath 
+&& apt-get install -y php8.1 php8.1 php8.1-fpm php8.1-imap php8.1-apcu php8.1-intl php8.1-cgi php8.1-common php8.1-zip php8.1-mbstring php8.1-gd php8.1-mysql php8.1-bcmath
 
 # INSTALL OSTICKET
 RUN git clone -b v${OSTICKET_VERSION} --depth 1 https://github.com/osTicket/osTicket.git \
