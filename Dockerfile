@@ -19,7 +19,8 @@ debconf-set-selections /tmp/preseed.txt \
 
 # APACHE2 + PHP AND ALL PACKAGES NEEDED
 RUN apt-get install -y apache2 \
-&& apt-get install -y php8.1 php8.1 php8.1-fpm php8.1-imap php8.1-apcu php8.1-intl php8.1-cgi php8.1-common php8.1-zip php8.1-mbstring php8.1-gd php8.1-mysql php8.1-bcmath
+&& apt-get install -y php8.1 php8.1 php8.1-fpm php8.1-imap php8.1-apcu php8.1-intl php8.1-cgi php8.1-common php8.1-zip php8.1-mbstring php8.1-gd php8.1-mysql php8.1-bcmath php8.1-xml \
+&& apt-get install -y libapache2-mod-php8.1
 
 # INSTALL OSTICKET
 RUN git clone -b v${OSTICKET_VERSION} --depth 1 https://github.com/osTicket/osTicket.git \
